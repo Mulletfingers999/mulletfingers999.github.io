@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Voxel Universe is a free, online, sandbox-construction game that is based on WebGL and VoxelJS">
+	<meta name="keywords" content="Voxel,JS,JavaScript,VoxelJS,WebGL,HTML5,Game,Sanbox,Construction">
+	<meta name="author" content="Liam O'Flynn">
+	<title>Voxel Universe</title>
+	<style>
+		/* Chrome, Safari, Opera */
+		@-webkit-keyframes slides {
+		    0% {
+		    	background: url(slides/forest.png) no-repeat center center fixed;
+		    	-webkit-background-size: cover;
+  				-moz-background-size: cover;
+  				-o-background-size: cover;
+  				background-size: cover;
+		    }
+		    /*50% {background: url(slides/hills.png) no-repeat center center fixed;}*/
+		    25% {
+		    	background: url(slides/iceplains.png) no-repeat center center fixed;
+		    	-webkit-background-size: cover;
+  				-moz-background-size: cover;
+  				-o-background-size: cover;
+  				background-size: cover;
+		    }
+
+		    50% {
+		    	background: url(slides/hills.png) no-repeat center center fixed;
+		    	-webkit-background-size: cover;
+  				-moz-background-size: cover;
+  				-o-background-size: cover;
+  				background-size: cover;
+		    }
+
+		    75% {
+		    	background: url(slides/valley.png) no-repeat center center fixed;
+		    	-webkit-background-size: cover;
+  				-moz-background-size: cover;
+  				-o-background-size: cover;
+  				background-size: cover;
+		    }
+
+		    100% {
+		    	background: url(slides/forest.png) no-repeat center center fixed;
+		    	-webkit-background-size: cover;
+  				-moz-background-size: cover;
+  				-o-background-size: cover;
+  				background-size: cover;
+		    }
+		}
+
+		/* Standard syntax */
+		@keyframes myfirst {
+		    from {background: red;}
+		    to {background: yellow;}
+		}
+
+		html {
+			-webkit-animation: slides 15s infinite; /* Chrome, Safari, Opera */
+    		animation: slides 15s infinite;
+			background: url(slides/valley.png) no-repeat center center fixed;
+  			-webkit-background-size: cover;
+  			-moz-background-size: cover;
+  			-o-background-size: cover;
+  			background-size: cover;
+		}
+
+		@font-face {
+			font-family: arcadeclassic;
+			src: url('main.TTF');
+		} 
+
+		body {
+			font-family: arcadeclassic;
+			text-align: center;
+			-webkit-user-select: none;  /* Chrome all / Safari all */
+			-moz-user-select: none;     /* Firefox all */
+			-ms-user-select: none;      /* IE 10+ */
+			-o-user-select: none;
+			user-select: none;  
+		}
+
+		h1 {
+			font-size: 7em;
+			cursor: default;
+		}
+
+		.cursive {
+			font-family: "Comic Sans MS";
+			font-size: 0.5em;
+			top: 40px;
+			position: relative;
+			right: 3em;
+		}
+
+		#webgl {
+			color: red;
+			font-size: 1.5em;
+		}
+
+		select {
+			background-color: lightgray;
+			font-size: 2em;
+			border: 1px solid rgb(169, 169, 169);
+		}
+
+		option[disabled] {
+			color: whitesmoke;
+		}
+
+		button {
+			background-color: lightgray;
+			font-size: 2em;
+			border: 1px solid rgb(169, 169, 169);
+		}
+
+		button:active {
+			margin-top: 5px;
+		}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1 id="webgl">Hmm, your browser doesn't seem to support WebGL, which is a requirement of Voxel Universe. Try upgrading to the latest version of your browser.<br />What is WebGL? (<a href="http://www.khronos.org/webgl/" target="_blank">Official Site</a> | <a href="http://en.wikipedia.org/wiki/WebGL" target="_blank">Wikipedia</a> | <a href="http://get.webgl.org" target="_blank">Get WebGL</a>)<br />What is a Browser? (<a href="http://whatbrowser.org">Google</a> | <a href="http://en.wikipedia.org/wiki/Web_browser" target="_blank">Wikipedia</a> | <a href="http://www.allaboutcookies.org/browsers/">AllAboutCookies.org</a>)</h1>
+	<script>
+		//WebGL script
+		//This script isn't the best way to detect WebGl Support, but it works most of the time =P
+		if ("WebGLRenderingContext" in window) {
+        	$('#webgl').attr('style', 'display: none;');
+    	} else {
+        	$('#webgl').attr('style', 'display: auto;');
+    	}
+	</script>
+	<h1>VOXEL<span class="cursive">Universe</span></h1>
+	<select id="biome">
+		<option selected disabled>Select a Biome</option>
+		<option>Forest</option>
+		<option>Hills</option>
+		<option>Valley</option>
+		<option>IcePlains</option>
+		<option>Plains</option>
+		<option>Desert</option>
+	</select><br/><br/>
+	<button id="start">Generate World!</button>
+	<script>
+		//When the generate button is clicked, navigate to the world page
+		$('#start').click(function () {
+			window.location.href= document.URL + "/example/" + $('#biome').val().toLowerCase();
+		});
+	</script>
+	<audio style="display: none;" loop autoplay>
+		<source src="example/music/darkfog.ogg" type="audio/ogg">
+		<source src="example/music/darkfog.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+</body>
+</html>
