@@ -118,6 +118,12 @@
 		button:active {
 			margin-top: 5px;
 		}
+
+		hr {
+			border-width: 10px;
+			border-style: double;
+			color: rgb(46, 23, 7);
+		}
 	</style>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
@@ -143,15 +149,22 @@
 		<option>Desert</option>
 	</select><br/><br/>
 	<button id="start">Generate World!</button>
+	<hr>
+	<button id="story">Story Mode!</button>
 	<script>
 		//When the generate button is clicked, navigate to the world page
 		$('#start').click(function () {
 			window.location.href= document.URL + "/example/" + $('#biome').val().toLowerCase();
 		});
+
+		$('#story').click(function () {
+			window.location.href= document.URL + "/example/1/static";
+		});
 	</script>
 	<audio style="display: none;" loop autoplay>
 		<source src="example/music/darkfog.ogg" type="audio/ogg">
 		<source src="example/music/darkfog.mp3" type="audio/mpeg">
+		<source src="example/music/darkfog.mp3" type="audio/mp3">
 		Your browser does not support the audio element.
 	</audio>
 </body>

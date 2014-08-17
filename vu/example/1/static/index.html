@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Chapter 1 of 5: Pandemonium</title>
+    <style type="text/css">
+      @font-face {
+        font-family: main;
+        src: url('../../sinister.ttf');
+      }
+
+      /* Chrome, Safari, Opera */
+      @-webkit-keyframes fade {
+          0% {opacity: 0;}
+          80% {opacity: 0;}
+          100% {opacity: 1;}
+      }
+
+      /* Standard syntax */
+      @keyframes fade {
+          0% {opacity: 0;}
+          80% {opacity: 0;}
+          100% {opacity: 1;}
+      }
+
+      /* Chrome, Safari, Opera */
+      @-webkit-keyframes fade2 {
+          0% {opacity: 1;}
+          80% {opacity: 1;}
+          100% {opacity: 0;}
+      }
+
+      /* Standard syntax */
+      @keyframes fade2 {
+          0% {opacity: 1;}
+          80% {opacity: 1;}
+          100% {opacity: 0;}
+      }
+
+      body {
+        margin: 0px;
+        overflow: hidden;
+        cursor: none;
+      }
+
+      .container {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      #fade {
+        background-color: black;
+        color: white;
+        font-family: main;
+        height: 100%;
+        text-align: center;
+        position: relative;
+        z-index: 1000;
+      }
+
+      #inside {
+        position:absolute; top:50%; height:10em; margin-top:-2em; left: 50%; margin-left:-3em;
+        -webkit-animation: fade 4s; /* Chrome, Safari, Opera */
+        animation: fade 4s;
+      }
+
+      h1 {
+        font-size: 4em;
+      }
+
+      #stats {
+        display: none;
+      }
+    </style>
+    <script>
+      setTimeout(function() {document.getElementById('inside').setAttribute('style', '-webkit-animation: fade2 4s; animation: fade2 4s;')}, 6000)
+      setTimeout(function() {document.getElementById('fade').setAttribute('style', 'display: none;');document.getElementById('b').setAttribute('style', 'cursor: crosshair;');document.getElementById('container').setAttribute('style', 'display: block;');document.getElementById('music').setAttribute('autoplay', 'autoplay');}, 10000)
+    </script>
+  </head>
+  <body id="b">
+    <div id="container" class="container" style="display: none;"></div>
+    <div id="fade" class="container"><h1 id="inside">Chapter 1 of 5: Pandemonium</h1></div>
+    <script type="text/javascript" src="bundle.js"></script>
+    <audio style="display: none;" id="music" loop>
+      <source src="../../music/funinabottle.ogg" type="audio/ogg">
+      <source src="../../music/funinabottle.mp3" type="audio/mpeg">
+      <source src="../../music/funinabottle.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </body>
+</html>
