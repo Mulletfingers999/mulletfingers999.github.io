@@ -1,0 +1,312 @@
+<!--Hello Source Digger! Have a smile: =)-->
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/dinbror/bpopup/master/jquery.bpopup.min.js"></script>
+	<title>Smile Spreader!</title>
+	<style>
+
+		#smiles {
+			border: 2px solid chocolate;
+			height: 1000px;
+			width: 100%;
+		}
+
+		.smile {
+			display: block;
+			text-indent: -9999px;
+			width: 100px;
+			height: 100px;
+			background-size: 100px 100px;
+			cursor: pointer;
+			position: absolute;
+		}
+
+		h1, progress, #levelouter, #menu {
+			display: block;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		html {
+			background: url('img/bg.jpg') no-repeat center center fixed; 
+  			-webkit-background-size: cover;
+  			-moz-background-size: cover;
+  			-o-background-size: cover;
+  			background-size: cover;
+		}
+
+		body {
+			color: rgb(41, 41, 41);
+			font-family: monospace;
+		}
+
+		progress[value] {
+		  /* Reset the default appearance */
+		  -webkit-appearance: none;
+		   appearance: none;
+
+		  width: 250px;
+		  height: 20px;
+		}
+
+		progress[value]::-webkit-progress-bar {
+		  	background-color: #eee;
+		  	border-radius: 2px;
+		  	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+		}
+
+		progress[class="1"]::-webkit-progress-value {
+			background: rgb(24,109,226);
+			background: -moz-linear-gradient(top,  rgba(24,109,226,1) 0%, rgba(0,69,165,1) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(24,109,226,1)), color-stop(100%,rgba(0,69,165,1)));
+			background: -webkit-linear-gradient(top,  rgba(24,109,226,1) 0%,rgba(0,69,165,1) 100%);
+			background: -o-linear-gradient(top,  rgba(24,109,226,1) 0%,rgba(0,69,165,1) 100%);
+			background: -ms-linear-gradient(top,  rgba(24,109,226,1) 0%,rgba(0,69,165,1) 100%);
+			background: linear-gradient(to bottom,  rgba(24,109,226,1) 0%,rgba(0,69,165,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#186de2', endColorstr='#0045a5',GradientType=0 );
+			-webkit-box-shadow: 0px 0px 12px 0px rgba(24, 109, 226, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
+			box-shadow: 0px 0px 12px 0px rgba(24, 109, 226, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
+
+		    border-radius: 2px; 
+		    background-size: 35px 20px, 100% 100%, 100% 100%;
+		}
+
+		progress[class="2"]::-webkit-progress-value {
+			background: rgb(232,25,87);
+			background: -moz-linear-gradient(top,  rgba(232,25,87,1) 0%, rgba(170,0,51,1) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232,25,87,1)), color-stop(100%,rgba(170,0,51,1)));
+			background: -webkit-linear-gradient(top,  rgba(232,25,87,1) 0%,rgba(170,0,51,1) 100%);
+			background: -o-linear-gradient(top,  rgba(232,25,87,1) 0%,rgba(170,0,51,1) 100%);
+			background: -ms-linear-gradient(top,  rgba(232,25,87,1) 0%,rgba(170,0,51,1) 100%);
+			background: linear-gradient(to bottom,  rgba(232,25,87,1) 0%,rgba(170,0,51,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e81957', endColorstr='#aa0033',GradientType=0 );
+			-webkit-box-shadow: 0px 0px 12px 0px rgba(232, 25, 87, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
+			box-shadow: 0px 0px 12px 0px rgba(232, 25, 87, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
+
+			border-radius: 2px; 
+		    background-size: 35px 20px, 100% 100%, 100% 100%;
+		}
+
+		progress[class="3"]::-webkit-progress-value {
+			background: rgb(229,195,25);
+			background: -moz-linear-gradient(top,  rgba(229,195,25,1) 0%, rgba(168,140,0,1) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(229,195,25,1)), color-stop(100%,rgba(168,140,0,1)));
+			background: -webkit-linear-gradient(top,  rgba(229,195,25,1) 0%,rgba(168,140,0,1) 100%);
+			background: -o-linear-gradient(top,  rgba(229,195,25,1) 0%,rgba(168,140,0,1) 100%);
+			background: -ms-linear-gradient(top,  rgba(229,195,25,1) 0%,rgba(168,140,0,1) 100%);
+			background: linear-gradient(to bottom,  rgba(229,195,25,1) 0%,rgba(168,140,0,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5c319', endColorstr='#a88c00',GradientType=0 );
+			-webkit-box-shadow: 0px 0px 12px 0px rgba(229, 195, 25, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
+			box-shadow: 0px 0px 12px 0px rgba(229, 195, 25, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
+
+			border-radius: 2px; 
+		    background-size: 35px 20px, 100% 100%, 100% 100%;
+		}
+
+		progress[class="4"]::-webkit-progress-value {
+			background: rgb(126,234,25);
+			background: -moz-linear-gradient(top,  rgba(126,234,25,1) 0%, rgba(83,173,0,1) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(126,234,25,1)), color-stop(100%,rgba(83,173,0,1)));
+			background: -webkit-linear-gradient(top,  rgba(126,234,25,1) 0%,rgba(83,173,0,1) 100%);
+			background: -o-linear-gradient(top,  rgba(126,234,25,1) 0%,rgba(83,173,0,1) 100%);
+			background: -ms-linear-gradient(top,  rgba(126,234,25,1) 0%,rgba(83,173,0,1) 100%);
+			background: linear-gradient(to bottom,  rgba(126,234,25,1) 0%,rgba(83,173,0,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7eea19', endColorstr='#53ad00',GradientType=0 );
+			webkit-box-shadow: 0px 0px 12px 0px rgba(126, 234, 25, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
+			box-shadow: 0px 0px 12px 0px rgba(126, 234, 25, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
+
+			border-radius: 2px; 
+		    background-size: 35px 20px, 100% 100%, 100% 100%;
+		}
+
+		footer {
+			position: fixed;
+			right: 10px;
+			bottom: 10px;
+			background-color: whitesmoke;
+		}
+
+		#menu {
+			font-size: large;
+		}
+
+		#menudialog {
+			background-color: whitesmoke;
+			padding: 10em;
+			border-radius: 1em;
+		}
+	</style>
+</head>
+<body>
+	<h1>Smile Spreader! So far, <span class="smilesNumber">0</span> smiles have been spread!</h1>
+	<br><progress max="5"></progress><br>
+	<span style="font-size: medium;" id="levelouter">(Music level: <span id="level"></span>)</span><br>
+	<a href="javascript: void(0);" onclick="menudialog()" id="menu">Menu</a><br>
+	<div id="smiles"></div>
+	<div class="smile" style="display: none;">Example Smile - Pointless :( -</div>
+	<script>
+		$(document).ready(function() {
+			//init stuff... INITIALIZE THE AWESUM SAUCE ┗(＾0＾)┓
+			if (localStorage.getItem("alldemsmilesspread") != null && localStorage.getItem("alldemsmilesspread") != 0) { 
+				$('.smilesNumber').html(localStorage.getItem("alldemsmilesspread"));
+			} else {
+				$('.smilesNumber').html("0");
+			}
+
+			$('progress').attr('value', localStorage.getItem("alldemsmilesspread"));
+
+			if (localStorage.getItem("levelofdamusic") == null) {
+				localStorage.setItem("levelofdamusic", 0);
+			}
+
+			$('.audio').attr('src', 'music/' + localStorage.levelofdamusic + '.mp3');
+			$('.audioo').attr('src', 'music/' + localStorage.levelofdamusic + '.ogg');
+
+			$("progress").attr('max', localStorage.damaxofdaprogress);
+
+			$("#level").text(localStorage.levelofdamusic);
+
+			//progressbar colorizing (or whatever)
+			var perc = percent(parseInt($('progress').attr('value')), parseInt($('progress').attr('max')));
+
+			if (perc < 25) {
+				$('progress').attr('class', '1');
+			} else if (perc < 50) {
+				$('progress').attr('class', '2');	
+			} else if (perc < 75) {
+				$('progress').attr('class', '3');	
+			} else {
+				$('progress').attr('class', '4');
+			}
+		});
+
+		function percent(min, max) {
+			return min/max*100;
+		}
+
+		setInterval(function() {smile();}, 1000);
+
+		function smile() {
+			//Turn that frown upside down: =( --> =)
+			var type = rand(1, 6);
+			var deg = rand(-90, 90);
+			var x = rand(10, 90);
+			var y = rand(10, 90);
+			//$("#smiles").append("<object type=\"image/svg+xml\" data=\"img/" + type + ".svg\" width=\"100\" height=\"100\"></object>");
+			$("#smiles").append("<div class=\"smile\" style=\"background-image:url(img/" + type + ".svg);-webkit-transform: rotate(" + deg + "deg);left:" + x + "%;top:" + y + "%;\" onclick=\"$(this).hide();addASmile();\">");
+		}
+
+		function rand(min,max)
+		{
+			//Random ≠ Funny =/
+			return Math.floor(Math.random()*(max-min+1)+min);
+		}
+
+		function addASmile() {
+			//YAY! Smiles for all! (=   =)   :D   =P   xD
+			if (localStorage.getItem("alldemsmilesspread") != null) {
+				localStorage.setItem("alldemsmilesspread", parseInt(localStorage.alldemsmilesspread) + 1);
+			} else {
+				localStorage.setItem("alldemsmilesspread", 1);
+			}
+
+			$('.smilesNumber').html(localStorage.getItem("alldemsmilesspread"));
+			$('progress').attr('value', localStorage.getItem("alldemsmilesspread"));
+
+			//progress bar code
+			if (localStorage.getItem("alldemsmilesspread") == parseInt($("progress").attr('max'))) {
+
+				localStorage.setItem("damaxofdaprogress", parseInt($("progress").attr('max'))*rand(2,5));
+
+				if (localStorage.getItem("levelofdamusic") != null) {
+					localStorage.setItem("levelofdamusic", parseInt(localStorage.levelofdamusic) + 1);
+				} else {
+					localStorage.setItem("levelofdamusic", 1);
+				}
+
+				$('.audio').attr('src', 'music/' + localStorage.levelofdamusic + '.mp3');
+				$('.audioo').attr('src', 'music/' + localStorage.levelofdamusic + '.ogg');
+
+				window.location.replace(document.URL);
+			}
+
+			//progressbar colorizing (or whatever)
+			var perc = percent(parseInt($('progress').attr('value')), parseInt($('progress').attr('max')));
+
+			if (perc < 25) {
+				$('progress').attr('class', '1');
+			} else if (perc < 50) {
+				$('progress').attr('class', '2');	
+			} else if (perc < 75) {
+				$('progress').attr('class', '3');	
+			} else {
+				$('progress').attr('class', '4');
+			}
+		}
+
+		function menudialog() {
+			$('#menudialog').bPopup({
+	            fadeSpeed: 'slow',
+	            followSpeed: 1500
+        	});
+		}
+	</script>
+	<audio style="display: none;" loop autoplay>
+		<source src="music/0.mp3" type="audio/mpeg" class="audio">
+		<source src="music/0.mp3" type="audio/mp3" class="audio">
+		<source src="music/0.ogg" type="audio/ogg" class="audioo">
+		Your browser does not support the HTML5 audio element, Smile Spreader <i>should<i> still work, you just won't be able to hear the music :(.
+	</audio>
+	<footer>
+		<strong>Smile Spreader, Version 0.1A</strong><br>
+		To-Do List:
+		<ul>
+			<li>(Empty)</li>
+		</ul>
+	</footer>
+	<div id="menudialog">
+		<h1>Menu</h1>
+		<h2>Stats</h2>
+		<pre>
+		<span class="smilesNumber">0</span> smiles spread this game
+		<span class="smilesNumber">0</span> smiles spread all time
+		</pre>
+
+		<h2>Buttons (for clicking)</h2>
+		<pre>
+		<button onclick="reset()">Reset Game (Lose smiles spread)</button>
+		<button onclick="killeverything()">Hard Reset (Kills everything :O)</button>
+		</pre>
+
+		<span>-Click anywhere outside this dialog to close it-</span>
+
+		<script>
+			function reset() {
+				var sure = confirm("You sure 'bout dat?");
+
+				if (sure == true) {
+					localStorage.setItem("alldemsmilesspread", 0);
+					window.location.replace(document.URL);
+				}
+				
+			}
+
+			function killeverything() {
+				var rlysure = confirm("OMG :O :O :O (You rly wanna lose all your progress!?)");
+
+				if (rlysure == true) {
+					alert('Well, Okay then :( ...');
+
+					localStorage.setItem("alldemsmilesspread", 0);
+					localStorage.setItem("damaxofdaprogress", 5);
+					localStorage.setItem("levelofdamusic", 0);
+
+					window.location.replace(document.URL);
+				}
+			}
+		</script>
+	</div>
+</body>
+</html>
