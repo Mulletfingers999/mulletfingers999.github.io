@@ -994,7 +994,7 @@ Game.prototype.showChunk = function(chunk) {
   var bounds = this.voxels.getBounds.apply(this.voxels, chunk.position)
   var cubeSize = this.cubeSize
   var scale = new THREE.Vector3(cubeSize, cubeSize, cubeSize)
-  var mesh = voxelMesh(chunk, this.mesher, scale)
+  var mesh = voxelMesh(chunk, voxel.meshers.greedy, scale, this.THREE);
   this.voxels.chunks[chunkIndex] = chunk
   if (this.voxels.meshes[chunkIndex]) this.scene.remove(this.voxels.meshes[chunkIndex][this.meshType])
   this.voxels.meshes[chunkIndex] = mesh
@@ -38795,7 +38795,7 @@ ChunkMatrix.prototype._update = function (ci) {
     var chunk = this.chunks[ckey];
     if (!chunk) return;
     
-    var mesh = voxelMesh(chunk, voxel.meshers.greedy, scale);
+    var mesh = voxelMesh(chunk, voxel.meshers.greedy, scale, T);
     
     if (this.meshes[ckey]) {
         var s = this.meshes[ckey].surfaceMesh || this.meshes[ckey].wireMesh;
@@ -51191,25 +51191,119 @@ Health.prototype.isDead = function () {
 };
 });
 
+require.define("/node_modules/voxel-creature/index.js",function(require,module,exports,__dirname,__filename,process,global){
+  var inherits = require('inherits');
+var EventEmitter = require('events').EventEmitter;
 
-require.define("/example/swarm.js",function(require,module,exports,__dirname,__filename,process,global){var createGame = require('voxel-engine');
-//Level 1
-var createTerrain = require('voxel-perlin-terrain');
-var game = createGame({
-    generateVoxelChunk: createTerrain({scaleFactor:6}),
-    texturePath: './textures/',
-    materials: [
-    'barrier',
-    ['grass_top', 'grass_top', 'grass_top'],
-    'grass_top',
-    'tree_side',
-    'leaves_opaque'
-  ],
-  startingPosition: [35, -1200, 35],
-  worldOrigin: [0, 0, 0],
-  generateChunks: true,
+module.exports = function (game) {
+    return function (obj, opts) {
+        return new Creature(game, obj, opts);
+    };
+};
+
+inherits(Creature, EventEmitter);
+
+function Creature (game, obj, opts) {
+    var T = game.THREE;
+    this.game = game;
+    
+    if (!opts) opts = {};
+    var force = opts.force || [ 0, -0.00009, 0 ];
+    if (Array.isArray(force)) {
+        force = new T.Vector3(force[0], force[1], force[2]);
+    }
+    else force = new T.Vector3(force.x, force.y, force.z);
+    
+    var dims = opts.dims || new T.Vector3(10, 10, 10);
+    this.item = game.makePhysical(obj, dims);
+    this.item.subjectTo(force);
+    game.scene.add(obj);
+    game.addItem(this.item);
+    
+    this.position = this.item.yaw.position;
+    this.rotation = this.item.yaw.rotation;
+}
+
+Creature.prototype.jump = function (x) {
+    if (x === undefined) x = 1;
+    this.move(0, x, 0);
+};
+
+Creature.prototype.move = function (x, y, z) {
+    var game = this.game;
+    var T = game.THREE;
+    
+    if (typeof x === 'object' && Array.isArray(x)) {
+        y = x[1]; z = x[2]; x = x[0];
+    }
+    if (typeof x === 'object') {
+        y = x.y; z = x.z; x = x.x;
+    }
+    this.item.velocity.x += x;
+    this.item.velocity.y += y;
+    this.item.velocity.z += z;
+    
+    if (this.item.velocity.y === 0) {
+        var angle = this.rotation.y;
+        var pt = this.position.clone();
+        pt.x += game.cubeSize / 2 * Math.sin(angle);
+        pt.z += game.cubeSize / 2 * Math.cos(angle);
+        if (game.getBlock(pt)) this.emit('block');
+    }
+};
+
+Creature.prototype.lookAt = function (obj) {
+    var a = obj.position || obj;
+    var b = this.position;
+    
+    this.item.yaw.rotation.y = Math.atan2(a.x - b.x, a.z - b.z)
+        + Math.random() * 1 / 4 - 1 / 8
+    ;
+};
+
+Creature.prototype.notice = function (target, opts) {
+    var self = this;
+    if (!opts) opts = {};
+    if (opts.radius === undefined) opts.radius = 500;
+    if (opts.collisionRadius === undefined) opts.collisionRadius = 25;
+    if (opts.interval === undefined) opts.interval = 1000;
+    var pos = target.position || target;
+    
+    return setInterval(function () {
+        var dist = self.position.distanceTo(pos);
+        if (dist < opts.collisionRadius) {
+            self.emit('collide', target);
+        }
+        
+        if (dist < opts.radius) {
+            self.noticed = true;
+            self.emit('notice', target);
+        }
+        else {
+            self.noticed = false;
+            self.emit('frolic', target);
+        }
+    }, opts.interval);
+};
 });
 
+
+require.define("/example/swarm.js",function(require,module,exports,__dirname,__filename,process,global){var createGame = require('voxel-engine');
+//Level 2
+var createTerrain = require('voxel-perlin-terrain');
+var game = createGame({
+    //generateVoxelChunk: createTerrain(2, 32),
+    generate: function(x, y, z) {return y === 1 ? 1 : 0},
+    chunkDistance: 2,
+    texturePath: './textures/',
+    materials: [['grass_top', 'grass_top', 'grass_top'], 'tree_side', 'leaves_opaque'],
+  
+});
+
+/*var createHealth = require('voxel-health');
+var health = createHealth({max: 20});
+createHealth.heal(4);
+alert(health.isDead);*/
 var health = 100;
 var max = 20;
 
@@ -51273,15 +51367,15 @@ var createPlayer = require('voxel-player')(game);
 var maxwell = createPlayer('./textures/maxwell.png');
 maxwell.possess();
 window.maxwell = maxwell;
-maxwell.yaw.position.y = 1500;
 
 function range(minimum, maximum) {
   return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
 }
 
 //Servo
+//servo.on('rotation', function (rot) {            detached.rotation.y = rot;       });
 var createServo = require('voxel-servo')(game);
-var servo = createServo({ x: range(0, 500), y: -1486, z: range(0, 500) });
+var servo = createServo({ x: range(0, 500), y: 0, z: range(0, 500) });
 console.log("Servo at: ");
 console.log(servo.getservo().position);
 setInterval(function () {    servo.rotate(Math.PI / 256);}, 50);
@@ -51296,7 +51390,7 @@ window.addEventListener('keydown', function (ev) {
     var b = servo.getservo().position;
     var dist = a.distanceTo(b);
     if (dist < 50) {
-      window.location.replace('../../2/static');
+      window.location.replace('../../3/static');
     }
 });
 
@@ -51309,7 +51403,6 @@ container.addEventListener('click', function() {
   game.requestPointerLock(container);
   hasLock = true;
 });*/
-
 
 //game.controls.pitchObject.rotation.x = -1.5;
 var hasLock = false;
@@ -51331,9 +51424,10 @@ game.on('mousedown', function (pos) {
 
 //Trees
 var createTree = require('voxel-forest');
-for (var i = 0; i < 100; i++) {
-  createTree(game, { bark: 4, leaves: 5, treetype: Math.floor(Math.random()*(2-1+1)+1)});
+for (var i = 0; i < 250; i++) {
+  createTree(game, { bark: 2, leaves: 3});
 }
+
 var erase = true;
 function ctrlToggle (ev) { erase = !ev.ctrlKey }
 
@@ -51341,18 +51435,123 @@ function ctrlToggle (ev) { erase = !ev.ctrlKey }
 var explode = require('voxel-debris')(game);
 
 
+
 game.on('collision', function(item) {alert(item)})
 
 window.addEventListener('keydown', ctrlToggle);
 window.addEventListener('keyup', ctrlToggle);
 
+/*var createCreature = require('voxel-creature')(game);
+var creature = createCreature((function () {
+    var position = new game.THREE.Vector3(0, 0, 0);
+    var voxels = [
+        [1, 2, 6, 1],
+        [3, 2, 6, 1],
+        [3, 3, 6, 1],
+        [1, 3, 6, 1],
+        [1, 4, 6, 1],
+        [2, 4, 6, 1],
+        [3, 2, 2, 1],
+        [1, 2, 2, 1],
+        [3, 3, 2, 1],
+        [1, 3, 2, 1],
+        [1, 4, 2, 1],
+        [3, 4, 2, 1],
+        [2, 4, 2, 1],
+        [3, 4, 3, 1],
+        [3, 4, 4, 1],
+        [3, 4, 5, 1],
+        [2, 4, 3, 1],
+        [2, 4, 4, 1],
+        [2, 4, 5, 1],
+        [1, 4, 3, 1],
+        [1, 4, 4, 1],
+        [1, 4, 5, 1],
+        [2, 5, 6, 1],
+        [2, 6, 6, 1],
+        [3, 6, 6, 1],
+        [1, 6, 6, 1],
+        [1, 7, 6, 1],
+        [3, 7, 6, 1],
+        [2, 6, 7, 1],
+        [2, 4, 1, 1],
+        [3, 4, 6, 1],
+        [4, 4, 6, 1],
+        [4, 4, 4, 1],
+        [4, 4, 2, 1],
+        [0, 4, 6, 1],
+        [0, 4, 4, 1],
+        [0, 4, 2, 1],
+        [1, 5, 3, 1],
+        [1, 5, 5, 1],
+        [3, 5, 3, 1],
+        [3, 5, 5, 1],
+        [2, 5, 4, 1],
+        [2, 5, 2, 1]
+    ];
+    var size = game.cubeSize;
+    var group = game.chunkGroups.create();
+    voxels.map(function (voxel) {
+        group.setBlock({
+                x: position.x + voxel[0] * size,
+                y: position.y + voxel[1] * size,
+                z: position.z + voxel[2] * size
+            }
+            , voxel[3])
+    });
+    var obj = new game.THREE.Object3D;
+    Object.keys(group.meshes).forEach(function (key) {
+        var m = group.meshes[key];
+        obj.add(m);
+        m.scale.x *= 0.1;
+        m.scale.y *= 0.1;
+        m.scale.z *= 0.1;
+    });
+    obj.position = group.position;
+    return obj;
+})());
+
+window.creature = creature;
+
+creature.position.y = -100;
+creature.position.x = Math.random() * 300 - 150;
+creature.position.z = Math.random() * 300 - 150;
+
+creature.on('block', function () {
+    creature.jump();
+});
+
+creature.notice(maxwell, {
+    radius: 500,
+    interval: 1000
+});
+
+creature.on('notice', function (player) {
+    creature.lookAt(player);
+    creature.move(0, 0, 0.5);
+});
+
+creature.on('frolic', function () {
+    creature.rotation.y += Math.random() * Math.PI / 2 - Math.PI / 4;
+    creature.move(0, 0, 0.5 * Math.random());
+});
+
+creature.on('collide', function (player) {
+    console.log('COLLIDE');
+});
+
+setInterval(function () {
+    if (creature.noticed) return;
+    creature.rotation.y += Math.random() * Math.PI / 2 - Math.PI / 4;
+    creature.move(0, 0, 0.5 * Math.random());
+}, 1000);*/
 
 //game.requestPointerLock(container);
 var createSpider = require('../')(game);
 
-for (var i = 0; i < 50; i++) (function (spider) {
+for (var i = 0; i < 100; i++) (function (spider) {
     var move = false;
-    spider.position.y = -1000;
+    spider.position.y = -500;
     spider.position.x = Math.random() * 300 - 150;
     spider.position.z = Math.random() * 300 - 150;
     
