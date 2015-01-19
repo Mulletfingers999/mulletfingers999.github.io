@@ -2,28 +2,79 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- jquery + mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!-- end -->
+
 	<title>Nothing to see here - Mulletfingers999</title>
+
 	<style>
 		body {
-			background-image: url('bg.gif');
-			font-family: cursive;
 			text-align: center;
-			margin-top: 7em;
 		}
 	</style>
 </head>
 <body>
-	<h1>Website for hipsters... and me</h1>
-	<hr>
-	<h2>So... I'm Mulletfingers999, some guy who got into Web Stuff. While your here, check out some stuff I made below</h2><br>
+	<div data-role="page" id="main">
+		<div data-role="header">
+			<h1 style="font-size: 2em;">Website for hipsters... and me</h1>
+		</div>
 
-	<a href="vu/"><img src="vu/slides/forest.png" width="300"><br>
-	<strong>VOXEL UNIVERSE</strong></a><br><br>
-	An experimental WebGL game where you complete survive in harsh, dark worlds. Each world has a different theme making the world difficult to survive in.<br><br><br>
+		<div data-role="main" class="ui-content">
+			<h3>Why hello, interneter. Apparently you have found my site.</h3>
+			<p>
+				Yeah, not much to see here. It's mostly a place for me to dump all my abandoned projects.
+				If you're lucky I might be working on a couple of &#39;em... or I might just be on, erh,
+				 Steam...
+			</p>
+			<h4>Well, while yer hear, you could check out somma me projects ;)</h4>
+			<nav>
+				<strong>Browsing</strong>
+				<a href="#active">Active &amp; Current</a> |
+				<a href="#favs">Personal Favs</a> |
+				<a href="#pop">Popular By Users</a> |
+				<a href="#abandoned">Abandoned</a>
+			</nav>
+		</div>
 
-	<a href="smiles/"><img src="smiles/img/alpha.png" width="300"><br>
-	<strong>SMILE SPREADER!</strong></a><br><br>
-	A JS game where you click (spread) smiles... and the music gets progressively worse :D. It's alot more fun than it sounds.
+		<div data-role="footer">
+			<span style="font-size: 10px;">Copyright (c) Liam O'Flynn. <a href="about/">And who the hell is
+				that?</a></span>
+		</div>
+	</div>
 
+	<div data-role="page" id="abandoned">
+		<div data-role="header">
+			<h1 style="font-size: 2em;">Website for hipsters... and me</h1>
+		</div>
+
+		<div data-role="main" class="ui-content">
+			<pre>
+				&quot;An artist never really finishes his work, he merely abandons it.&quot;
+
+				~Paul Valery, French Poet
+			</pre>
+			<h3>Browsing Abandoned</h3>
+		</div>
+
+		<div data-role="footer">
+			<span style="font-size: 10px;">Copyright (c) Liam O'Flynn. <a href="about/">And who the hell is
+				that?</a></span>
+		</div>
+	</div>
+
+
+		<!--<a href="vu/"><img src="vu/slides/forest.png" width="300"><br>
+		<strong>VOXEL UNIVERSE</strong></a><br><br>
+		An experimental WebGL game where you complete survive in harsh, dark worlds. Each world has a
+		different theme making the world difficult to survive in.<br><br><br>
+
+		<a href="smiles/"><img src="smiles/img/alpha.png" width="300"><br>
+		<strong>SMILE SPREADER!</strong></a><br><br>
+		A JS game where you click (spread) smiles... and the music gets progressively worse :D.
+		It's alot more fun than it sounds.-->
 </body>
 </html>
