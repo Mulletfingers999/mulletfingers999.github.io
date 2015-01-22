@@ -487,8 +487,8 @@
    var term = Object.create(Terminal);
    term.init(CONFIG, '/json/sample.json', COMMANDS, function() {
       term.enqueue('login')
-          .enqueue('clark')
-          .enqueue('******')
+          .enqueue('liam')
+          .enqueue('*******')
           .enqueue('cat file1')
           .enqueue('help')
           .enqueue('ls -l')
