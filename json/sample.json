@@ -3,19 +3,25 @@
    "type": "dir",
    "contents": [
       {
-         "name": "file1",
+         "name": "hello_world.txt",
          "type": "text",
-         "contents": "Hello World!",
-         "description": "FOOO"
+         "contents": "Yo sup world, what is up my brosky",
+         "description": "A slightly less than typical hello world file"
       },
       {
-         "name": "pic.jpg",
+         "name": "glorious_penguin.png",
          "type": "img",
          "contents": "/images/penguin.png",
-         "caption": "What a beautiful penguin."
+         "caption": "Preach."
       },
       {
-         "name": "dir1",
+         "name": "instagram.png",
+         "type": "img",
+         "contents": "/images/ig.jpeg",
+         "caption": "Instagram sucks."
+      },
+      {
+         "name": "projects",
          "type": "dir",
          "contents": [
             {
