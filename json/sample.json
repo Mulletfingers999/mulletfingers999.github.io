@@ -1,83 +1,83 @@
 {
-   "name": "~",
-   "type": "dir",
-   "contents": [
-      {
-         "name": "hello_world.txt",
-         "type": "text",
-         "contents": "Yo sup world, what is up my brosky",
-         "description": "A slightly less than typical hello world file"
-      },
-      {
-         "name": "glorious_penguin.png",
-         "type": "img",
-         "contents": "/images/penguin.png",
-         "caption": "Preach."
-      },
-      {
-         "name": "instagram.png",
-         "type": "img",
-         "contents": "/images/ig.jpeg",
-         "caption": "Instagram sucks."
-      },
-      {
-         "name": "projects",
-         "type": "dir",
-         "contents": [
+  "name": "~",
+  "type": "dir",
+  "contents": [
+    {
+      "name": "hello_world.txt",
+      "type": "text",
+      "contents": "Yo sup world, what is up my brosky",
+      "description": "A slightly less than typical hello world file"
+    },
+    {
+      "name": "glorious_penguin.png",
+      "type": "img",
+      "contents": "/images/penguin.png",
+      "caption": "Preach."
+    },
+    {
+      "name": "instagram.png",
+      "type": "img",
+      "contents": "/images/ig.jpeg",
+      "caption": "Instagram sucks. \'Nuff said."
+    },
+    {
+      "name": "projects",
+      "type": "dir",
+      "contents": [
+        {
+          "name": "active_and_current",
+          "type": "dir",
+          "contents": [
             {
-               "name": "active_and_current",
-               "type": "dir",
-               "contents": [
-                  {
-                     "name": "file3",
-                     "type": "exec",
-                     "contents": "http://google.com",
-                     "description": "blahblah"
-                  }
-               ]
-            },
-	    {
-               "name": "personal_favs",
-               "type": "dir",
-               "contents": [
-                  {
-                     "name": "file3",
-                     "type": "exec",
-                     "contents": "http://google.com",
-                     "description": "blahblah"
-                  }
-               ]
-            },
-	    {
-               "name": "popular_by_users",
-               "type": "dir",
-               "contents": [
-                  {
-                     "name": "file3",
-                     "type": "exec",
-                     "contents": "http://google.com",
-                     "description": "blahblah"
-                  }
-               ]
-            },
-	    {
-               "name": "abandoned",
-               "type": "dir",
-               "contents": [
-                  {
-                     "name": "file3",
-                     "type": "exec",
-                     "contents": "http://google.com",
-                     "description": "blahblah"
-                  },
-		  {
-		     "name": "note",
-		     "type": "text",
-		     "contents": "These projects have been abandoned, but that doesn't mean I won't go back to them. Other than that, these have all been dumped for mixed reasons",
-		  }
-               ]
+              "name": "file3",
+              "type": "exec",
+              "contents": "http://google.com",
+              "description": "blahblah"
             }
-         ]
-      }
-   ]
+          ]
+        },
+        {
+          "name": "personal_favs",
+          "type": "dir",
+          "contents": [
+            {
+              "name": "file3",
+              "type": "exec",
+              "contents": "http://google.com",
+              "description": "blahblah"
+            }
+          ]
+        },
+        {
+          "name": "popular_by_users",
+          "type": "dir",
+          "contents": [
+            {
+              "name": "file3",
+              "type": "exec",
+              "contents": "http://google.com",
+              "description": "blahblah"
+            }
+          ]
+        },
+        {
+          "name": "abandoned",
+          "type": "dir",
+          "contents": [
+            {
+              "name": "file3",
+              "type": "exec",
+              "contents": "http://google.com",
+              "description": "blahblah"
+            },
+            {
+              "name": "note",
+              "type": "text",
+              "contents": "These projects have been abandoned, but that doesn't mean I won't go back to them. Other than that, these have all been dumped for mixed reasons"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
