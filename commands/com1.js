@@ -195,7 +195,7 @@ COMMANDS.tree = function(argv, cb) {
 COMMANDS.help = function(argv, cb) {
    this._terminal.write(
        'Aye, interneter, apparently you\'ve found me website.<br> ' +
-       'It\'s a terminal, in case you haven\'t noticed, based off Unix because nobody likes Microsoft. '
+       'It\'s a terminal, in case you haven\'t noticed, based off Unix because nobody likes Microsoft. ' +
        'You can navigate by clicking on stuff that <a href="javascript:void(0)">underlines</a> when you put your mouse ' +
        'over it (link, anyone?), or by typing commands in the terminal (if yer up for a <i>real challenge</i>.). Type the name of a ' +
        '<span class="exec">link</span> to view it. Use "cd" to change into a ' +

@@ -489,7 +489,7 @@
       term.enqueue('login')
           .enqueue('liam')
           .enqueue('*******')
-          .enqueue('cat file1')
+          //.enqueue('cat file1')
           .enqueue('help')
           .enqueue('ls -l')
           .enqueue('cd dir1/foo')
