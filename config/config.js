@@ -17,9 +17,9 @@ var CONFIG = CONFIG || {};
 CONFIG.prompt = function(cwd, user) {
    if (user)
       return '<span class="user">' + user +
-          '</span>@<span class="host">clarkduvall.com</span>:<span class="cwd">' +
+          '</span>@<span class="host">mulletfingers999.github.io</span>:<span class="cwd">' +
           cwd + '</span>$ ';
-   return 'jsterm1.0 $ ';
+   return 'jsterm1.7 $ ';
 };
 
 CONFIG.username = '';
