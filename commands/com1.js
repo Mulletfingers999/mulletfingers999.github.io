@@ -209,6 +209,6 @@ COMMANDS.help = function(argv, cb) {
       if (this._terminal.commands.hasOwnProperty(c) && !c.startswith('_'))
          this._terminal.write(c + '  ');
    }
-   this._terminal.write('<br><br>**You can bring up this menu at any time by typing <span class="exec">help</span>');
+   this._terminal.write('<br><br>**You can bring up this menu at any time by typing <span class="exec">help</span><br><br>');
    cb();
 }

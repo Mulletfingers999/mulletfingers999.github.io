@@ -25,12 +25,7 @@
          "type": "dir",
          "contents": [
             {
-               "name": "file2",
-               "type": "text",
-               "contents": "foo"
-            },
-            {
-               "name": "foo",
+               "name": "active_and_current",
                "type": "dir",
                "contents": [
                   {
@@ -39,6 +34,47 @@
                      "contents": "http://google.com",
                      "description": "blahblah"
                   }
+               ]
+            }
+	    {
+               "name": "personal_favs",
+               "type": "dir",
+               "contents": [
+                  {
+                     "name": "file3",
+                     "type": "exec",
+                     "contents": "http://google.com",
+                     "description": "blahblah"
+                  }
+               ]
+            }
+	    {
+               "name": "popular_by_users",
+               "type": "dir",
+               "contents": [
+                  {
+                     "name": "file3",
+                     "type": "exec",
+                     "contents": "http://google.com",
+                     "description": "blahblah"
+                  }
+               ]
+            }
+	    {
+               "name": "abandoned",
+               "type": "dir",
+               "contents": [
+                  {
+                     "name": "file3",
+                     "type": "exec",
+                     "contents": "http://google.com",
+                     "description": "blahblah"
+                  },
+		  {
+		     "name": "note",
+		     "type": "text",
+		     "contents": "These projects have been abandoned, but that doesn't mean I won't go back to them. Other than that, these have all been dumped for mixed reasons",
+		  }
                ]
             }
          ]
