@@ -29,10 +29,16 @@
           "type": "dir",
           "contents": [
             {
-              "name": "file3",
+              "name": "Collab.Center",
               "type": "exec",
-              "contents": "http://google.com",
-              "description": "blahblah"
+              "contents": "http://collab.center",
+              "description": "Online, real-time collaborative code editor. It's Google Docs for code!"
+            },
+            {
+              "name": "Flag of the Day",
+              "type": "exec",
+              "contents": "https://mega.co.nz/#!S4kzhQhJ!EMnig8sMMzZ3axzXg0fyv5D2DRWdfuLitIC-_6WgR1M",
+              "description": "A free popup for Windows that displays a random country's flag in the System tray. Included with many other useful features, such as country location, etc."
             }
           ]
         },
@@ -41,10 +47,16 @@
           "type": "dir",
           "contents": [
             {
-              "name": "file3",
+              "name": "Collab.Center",
               "type": "exec",
-              "contents": "http://google.com",
-              "description": "blahblah"
+              "contents": "http://collab.center",
+              "description": "Online, real-time collaborative code editor. It's Google Docs for code!"
+            },
+            {
+              "name": "Flag of the Day",
+              "type": "exec",
+              "contents": "https://mega.co.nz/#!S4kzhQhJ!EMnig8sMMzZ3axzXg0fyv5D2DRWdfuLitIC-_6WgR1M",
+              "description": "A free popup for Windows that displays a random country's flag in the System tray. Included with many other useful features, such as country location, etc."
             }
           ]
         },
@@ -53,10 +65,10 @@
           "type": "dir",
           "contents": [
             {
-              "name": "file3",
+              "name": "null",
               "type": "exec",
-              "contents": "http://google.com",
-              "description": "blahblah"
+              "contents": "about:blank",
+              "description": "Nothing to see here, yet..."
             }
           ]
         },
@@ -65,10 +77,16 @@
           "type": "dir",
           "contents": [
             {
-              "name": "file3",
+              "name": "Smile Spreader!",
               "type": "exec",
-              "contents": "http://google.com",
-              "description": "blahblah"
+              "contents": "./smiles",
+              "description": "You click the smiles, and the music gets progressivley worse. Slightly more fun than it sounds."
+            },
+            {
+              "name": "Homles Browser",
+              "type": "exec",
+              "contents": "http://holmes-browser.tumblr.com",
+              "description": "A C# Web browser, based on a self-modified version of Trident. Don't tell microsoft..."
             },
             {
               "name": "note",
