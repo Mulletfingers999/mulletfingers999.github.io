@@ -94,7 +94,7 @@
               "description": "An experimental WebGL voxel-based game. Will continue if it starts to spark community interest"
             },
             {
-              "name": "Homles Browser",
+              "name": "Holmes Browser",
               "type": "exec",
               "contents": "http://holmes-browser.tumblr.com",
               "description": "A C# Web browser, based on a self-modified version of Trident. Don't tell microsoft..."
