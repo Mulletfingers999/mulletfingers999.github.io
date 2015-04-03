@@ -25,6 +25,11 @@
       "type": "dir",
       "contents": [
         {
+          "name": "about_me.txt",
+          "type": "test",
+          "contents": "I am a 13 year old hacker, fluent in PHP, Web Shtuff, and a multitude of other crap (Java, C#, etc.). I joined EternityIncurakai--a small startup of late middle and high schoolers--in early 2015 and currently work there as  a CTO. Collab.Center is my main project at the time, although I do enjoy creating and dumping small projects, many of which you can find here. In my personal life, I enjoy listening to weird music you've never heard of, making fun of weeaboos, while playing touhou & mixed strategy games."
+        },
+        {
           "name": "active_and_current",
           "type": "dir",
           "contents": [
@@ -95,7 +100,7 @@
               "description": "A C# Web browser, based on a self-modified version of Trident. Don't tell microsoft..."
             },
             {
-              "name": "note",
+              "name": "note.txt",
               "type": "text",
               "contents": "These projects have been abandoned, but that doesnt mean I wont go back to them. Other than that, these have all been dumped for mixed reasons"
             }
