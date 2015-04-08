@@ -1,4 +1,6 @@
 # [mulletfingers999.github.io](http://mulletfingers999.github.io)
+**Now Hosted On [justacrappywebsite.tk](http://justacrappywebsite.tk)!**
+
 My github page. Nothing more, nothing less. Feel free to contribute, I'm open to anything. The console is made with jsterm.
 
 ## Direcory Structure (JSTerm's)

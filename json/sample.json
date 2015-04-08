@@ -21,6 +21,11 @@
       "caption": "Instagram sucks. Nuff said."
     },
     {
+      "name": "Mobile Page",
+      "type": "exec",
+      "contents": "./mobile.html",
+    }
+    {
       "name": "projects",
       "type": "dir",
       "contents": [
