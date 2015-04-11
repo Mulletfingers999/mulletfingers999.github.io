@@ -23,12 +23,12 @@
     {
       "name": "IRC_Info.txt",
       "type": "text",
-      "contents": "#thefish on irc.freenode.net, talk about anything ya want!",
+      "contents": "#thefish on irc.freenode.net, you can talk/chat about anything ya want!"
     },
     {
       "name": "MobilePage.html",
       "type": "exec",
-      "contents": "./mobile.html",
+      "contents": "./mobile.html"
     },
     {
       "name": "projects",
