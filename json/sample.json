@@ -37,7 +37,15 @@
         {
           "name": "AboutMe.txt",
           "type": "text",
-          "contents": "I am a 13 year old hacker, fluent in PHP, Web Shtuff, and a multitude of other crap (Java, C#, etc.). I joined EternityIncurakai--a small startup of late middle and high schoolers--in early 2015 and currently work there as  a CTO. Collab.Center is my main project at the time, although I do enjoy creating and dumping small projects, many of which you can find here. In my personal life, I enjoy listening to weird music you've never heard of, making fun of weeaboos, while playing touhou & mixed strategy games."
+          "contents": "I am a 13 year old hacker, fluent in PHP, Web Shtuff, and a multitude of other crap (Java, C#, etc.). I joined EternityIncurakai--a small startup of late middle and high schoolers--in early 2015 and currently work there under the position of CTO. Collab.Center is my main project at the time, although I do enjoy creating and dumping small projects, many of which you can find here. In my personal life, I enjoy listening to weird music you've never heard of, making fun of normies, while playing touhou & mixed strategy games."
+        },
+        {
+          "name": "AMakeshiftBlog",
+          "type": "text",
+          "contents": [
+              "4/11/15~",
+              "Welcome to my makeshift blog, don't expect much. It will most likely be an unorganized mess of random thoughts and ideas, although every so often I might include a half-decent post. Might add RSS into this, for those of you who care that much. Ciao, TheFish."
+          ]
         },
         {
           "name": "active_and_current",
