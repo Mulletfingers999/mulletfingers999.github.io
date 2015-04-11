@@ -21,10 +21,15 @@
       "caption": "Instagram sucks. Nuff said."
     },
     {
-      "name": "Mobile Page",
+      "name": "IRC_Info.txt",
+      "type": "text",
+      "contents": "#thefish on irc.freenode.net, talk about anything ya want!",
+    },
+    {
+      "name": "MobilePage.html",
       "type": "exec",
       "contents": "./mobile.html",
-    }
+    },
     {
       "name": "projects",
       "type": "dir",
