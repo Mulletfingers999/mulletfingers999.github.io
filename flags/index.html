@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <title>Flags</title>
+  <style>
+  html {
+    color: white;
+  }
+  #left {
+    width: 47%;
+    border: 2px dashed white;
+    position: absolute;
+    left: 5px;
+    padding: 10px;
+  }
+  #right{
+    width: 47%;
+    border: 2px dashed white;
+    position: absolute;
+    right: 5px;
+    padding: 10px;
+  }
+  h1 {text-align: center;}
+  h2 {text-align: center;}
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+  <style type="text/css">
+  /* Obviously, none of this is necessary...
+  this is just to show that it can be done ...
+  I'm just putting some basic style on my shell
+  class, and the li's and a's within */
+  .shell {
+    width:300px;
+  }
+
+  .shell ul li {
+    list-style:none;
+  }
+
+  .shell a {
+    color: #232323;
+    display: block;
+    width: 100%;
+    height:30px;
+    margin: .5em 0;
+    background: #CFC;
+    padding: 5px 10px;
+    font-weight:bold;
+    border: 1px solid #999;
+    border-radius: 3px;
+    text-decoration:none;
+  }
+  </style>
+  <script>
+  if (self==top && document.URL.lastIndexOf('file://', 0) === 1) {
+    window.location.replace('http://justacrappywebsite.tk');
+  }
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(function(){
+    // Setup our method to retrieve the file list
+    var getFiles = function(){
+      // Call the /dl/ directory, which should serve
+      // back the directory-listing default page
+      // NOTE: This WILL NOT work if you have your server's
+      // default index/home page in this folder, as that will
+      // be returned instead of a directory listing!
+      $.get("./flags/", function(data) {
+        // get a reference to the ul I want to populate
+        var $s    = $(".shell ul");
+        // get a list of a tags from the returned data
+        var links = $(data).find("a");
+        // for each item in links...
+        links.each(function(){
+          // extract the href attr
+          var href = $(this).attr("href");
+          // filter out any links you don't want to display...
+          // in this case, I didn't want to display the
+          // sort-links and any links starting with a /
+          if(href.charAt(0) != "?" && href.charAt(0) != "/"){
+            // append a new li with an anchor tag inside
+            // it that has the href, and the link's text
+            $s.append("<li><a href=\"" + href + "\">" +
+            $(this).text() + "</a></li>");
+          }
+        });
+      });
+    };
+    // assign my click handler to #btnGet
+    $("#btnGet").click(getFiles);
+  });
+  </script>
+</head>
+<body>
+  <h1>Yeah... I make flags.</h1>
+  <h2>umadbro</h2>
+  <div id="left">
+    <h3>My Software:</h3>
+    <hr/>
+    <a href="https://www.reddit.com/r/vexillology/comments/2ei5wf/flagmaker_17_flagmaker_jr/" target="_blank">FlagMaker 1.7</a> -- A self-explanatory flag designer.
+    <br/>
+    <a href="https://www.reddit.com/r/vexillology/comments/2ei5wf/flagmaker_17_flagmaker_jr/" target="_blank">FlagMaker, Jr.</a> -- When I'm stuck with a chromebook.
+    <br/>
+    <a href="http://flag-designer.appspot.com/" target="_blank">Scrontch's Flag Designer</a> -- Back when I was a filthy casual vexillologist.
+    <br/>
+    <a href="https://www.reddit.com/r/vexillology/" target="_blank">/r/vexillology</a> -- For procrastination &amp; teh community.
+  </div>
+  <div id="right">
+    <h3>My flags:</h3>
+    <hr/>
+    <button id="btnGet">.get</button>
+    <div class="shell">
+      <!-- This is the place we're going to build our list -->
+      <ul></ul>
+    </div>
+  </div>
+</body>
+</html>
